@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="veterinaria" 
+	namespace="veterinaria.Entities">
+	<class name = "Mail" table = "mail">
+		<id name = "Codigo" column = "cod_mail" type = "int" unsaved-value = "0"> 
+			<generator class="native">
+        	<param name="sequence">mail_sequence</param>
+      	</generator>
+		</id>
+		<property name ="Direccion" column="direccion" not-null="false" type="string"/>
+		<property name = "Remitente" column = "remitente" not_null = "false" type = "string">
+		<property name = "Mails" cascade = "all-delete-orphan"/>
+		<property name = "Mails" cascade = "all - delete-orphan  "/>
+		
+		<many to one name = "Cliente" class = "Parcial.Entities.Mail" column = "cod_cont"
+			cascade = "all-delete-orphan"  not-null = "true"/>
+		</bag>
+
+		<many to one name = "Bandeja" class = "Parcial.Entities.Mail" column = "cod_band"
+			cascade = "all-delete-orphan"  not-null = "true"/>
+		</bag>
+	</class> 
+</hibernate-mapping>

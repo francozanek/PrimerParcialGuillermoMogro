@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="veterinaria" 
+	namespace="veterinaria.Entities">
+	<class name = "Contacto" table = "contacto">
+		<id name = "Codigo" column = "cod_cont" type = "int" unsaved-value = "0"> 
+			<generator class="native">
+        	<param name="sequence">contacto_sequence</param>
+      	</generator>
+		</id>
+		<property name="Nombre" column="nombre" not-null="false" type="string"/>
+		<property name="Edad" column="edad" not-null="false" type="int"/>
+		<property name="Mails" cascade = "all-delete-orphan"/>
+		<key column = "codigoMail"/>
+		<one to many class = "Parcial.Entities.Mail">
+		</bag>
+	</class> 
+</hibernate-mapping>
